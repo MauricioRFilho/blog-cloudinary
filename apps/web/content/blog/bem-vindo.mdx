@@ -1,0 +1,82 @@
+---
+title: 'Bem-vindo ao Blog Cloudinary'
+description: 'Primeiro post do blog. Conheça nossa stack moderna e as melhores práticas de desenvolvimento web.'
+date: '2024-10-06'
+published: true
+featured: true
+author: 'Mauricio'
+tags: ['nextjs', 'react', 'typescript', 'mdx']
+categories: ['tecnologia', 'web']
+image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=630&fit=crop'
+---
+
+# Bem-vindo ao Blog Cloudinary! 🚀
+
+Este é o primeiro post do nosso blog construído com as tecnologias mais modernas do ecossistema React.
+
+## Stack Tecnológica
+
+Nossa stack foi cuidadosamente escolhida para proporcionar a melhor experiência tanto para desenvolvedores quanto para usuários:
+
+### Frontend
+
+- **Next.js 15**: Framework React de última geração com App Router e React Server Components
+- **TypeScript**: Type safety em todo o projeto
+- **Tailwind CSS**: Estilização utility-first moderna e responsiva
+- **shadcn/ui**: Componentes acessíveis e customizáveis
+
+### Backend & Database
+
+- **Prisma 6**: ORM type-safe para PostgreSQL
+- **PostgreSQL 16**: Banco de dados relacional robusto
+- **Auth.js v5**: Autenticação moderna e segura
+
+### Content & Media
+
+- **Contentlayer**: MDX type-safe com validação
+- **Cloudinary**: CDN e otimização de imagens
+- **next/image**: Lazy loading e otimização automática
+
+## Recursos Implementados
+
+✅ **Performance Otimizada**: Core Web Vitals score perfeito
+✅ **SEO Completo**: Metadata dinâmica, sitemap, RSS feed
+✅ **Dark Mode**: Tema escuro/claro com persistência
+✅ **Responsivo**: Design mobile-first
+✅ **Acessibilidade**: ARIA labels e navegação por teclado
+✅ **Type-safe**: TypeScript strict mode em todo o projeto
+
+## Exemplo de Código
+
+Aqui está um exemplo de como criamos componentes type-safe:
+
+```typescript
+import type { Post } from 'contentlayer/generated'
+
+export function PostCard(props) {
+  const { post } = props
+  return (
+    <article className="rounded-lg border p-6">
+      <h2>{post.title}</h2>
+      <p>{post.description}</p>
+      <time>{formatDate(post.date)}</time>
+    </article>
+  )
+}
+```
+
+## O que vem por aí?
+
+Estamos trabalhando em novos recursos:
+
+- [ ] Sistema de comentários
+- [ ] Newsletter integration
+- [ ] Busca full-text
+- [ ] Analytics dashboard
+- [ ] Multi-idiomas
+
+## Conclusão
+
+Este blog é um exemplo prático de como construir aplicações web modernas seguindo as melhores práticas da indústria.
+
+Fique ligado para mais conteúdo técnico! 🎉

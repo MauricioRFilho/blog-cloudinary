@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: blog-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: blog
+    ports:
+      - '5433:5432'
+    volumes:
+      - pgdata_blog:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d blog']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - blog-network
+
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+      target: development
+    container_name: blog-web
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - '3000:3000'
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./apps/web:/app/apps/web
+      - ./packages:/app/packages
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - blog-network
+    command: pnpm --filter @blog/web dev
+
+volumes:
+  pgdata_blog:
+    name: blog_postgres_data
+
+networks:
+  blog-network:
+    driver: bridge
